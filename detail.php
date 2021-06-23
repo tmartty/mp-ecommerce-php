@@ -12,6 +12,8 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
 
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
+
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
     <link rel="stylesheet" href="./assets/category.css" media="screen, print">
@@ -124,13 +126,18 @@
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            Precio: <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            Unidades: <?php echo $_POST['unit'] ?>
+                                        </h3>
+                                        <h3 >
+                                            Total: <?php echo "$" . ($_POST['price'] * $_POST['unit']) ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <button style="margin-top: 20px;" type="submit" class="mercadopago-button" formmethod="post">
+                                        Pagar la compra
+                                    </button>
                                 </div>
                             </div>
                         </div>

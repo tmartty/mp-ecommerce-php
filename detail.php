@@ -57,10 +57,10 @@
             }
 
             // Init Mercado Pago SDK
-            \MercadoPago\SDK::setAccessToken($_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV']);
+            \MercadoPago\SDK::setAccessToken(getenv('MERCADOPAGO_ACCESS_TOKEN_DEV'));
 
             // Set integrator id
-            \MercadoPago\SDK::setIntegratorId($_ENV['MERCADOPAGO_INTEGRATOR_ID']);
+            \MercadoPago\SDK::setIntegratorId(getenv('MERCADOPAGO_INTEGRATOR_ID'));
 
             // Crea un objeto de preferencia
             $preference = new MercadoPago\Preference();
@@ -135,7 +135,7 @@
                                         Tienda e-commerce
                                     </h1>
                                     <h4>
-                                        <?php echo $_ENV['MERCADOPAGO_INTEGRATOR_ID'] ?>
+                                        <?php echo getenv('MERCADOPAGO_INTEGRATOR_ID') ?>
                                         <br>
                                         asdasd
                                     </h4>

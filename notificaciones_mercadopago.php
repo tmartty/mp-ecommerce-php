@@ -7,7 +7,7 @@
 
     //Something to write to txt log
     $log  = "Address: " . $_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a") . PHP_EOL .
-            "POST Data: " . print_r(array_values($data)) . PHP_EOL .
+            "POST Data: " . array_values($data) . PHP_EOL .
             "-------------------------" . PHP_EOL;
 
     //Save string to log, use FILE_APPEND to append.

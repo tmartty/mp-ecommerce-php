@@ -51,16 +51,22 @@
             $notification_url = '/notificaciones_mercadopago.php';
 
             // load .env variables
-            // if (file_exists(__DIR__ . '/.env')) {
-            //     $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
-            //     $dotenv->load();
-            // }
+            if (file_exists(__DIR__ . '/.env')) {
+                $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
+                $dotenv->load();
+                
+                $mercadopago_access_token = $_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV'];
+                $mercadopago_integrator_id = $_ENV['MERCADOPAGO_INTEGRATOR_ID'];
+            } else {
+                $mercadopago_access_token = getenv('MERCADOPAGO_ACCESS_TOKEN_DEV');
+                $mercadopago_integrator_id = getenv('MERCADOPAGO_INTEGRATOR_ID');
+            }
 
             // Init Mercado Pago SDK
-            \MercadoPago\SDK::setAccessToken(getenv('MERCADOPAGO_ACCESS_TOKEN_DEV'));
+            \MercadoPago\SDK::setAccessToken($mercadopago_access_token);
 
             // Set integrator id
-            \MercadoPago\SDK::setIntegratorId(getenv('MERCADOPAGO_INTEGRATOR_ID'));
+            \MercadoPago\SDK::setIntegratorId($mercadopago_integrator_id);
 
             // Crea un objeto de preferencia
             $preference = new MercadoPago\Preference();
@@ -135,7 +141,7 @@
                                         Tienda e-commerce
                                     </h1>
                                     <h4>
-                                        <?php echo getenv('MERCADOPAGO_INTEGRATOR_ID'])?>
+                                        <?php echo $mercadopago_integrator_id?>
                                         <br>
                                         asdasd
                                     </h4>

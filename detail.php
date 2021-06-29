@@ -70,6 +70,15 @@
             $item->external_reference = $external_reference;
 
             $preference->items = array($item);
+            $preference->payment_methods = [
+                installments => 6,
+                excluded_payment_methods => [
+                    ['id' => 'amex']
+                ],
+                excluded_payment_types => [
+                    ['id' => 'atm']
+                ]
+            ];
 
             $preference->save();
         ?>

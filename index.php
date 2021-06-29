@@ -61,8 +61,6 @@
                                         Tienda e-commerce
                                         <br>
                                         getenv: <?php echo getenv('FOO', false)?>
-                                        <br>
-                                        MERCADOPAGO_ACCESS_TOKEN_DEV: <?php echo getenv('MERCADOPAGO_ACCESS_TOKEN_DEV', false)?>
                                     </h1>
                                 </div>
                             </div>

@@ -45,10 +45,10 @@
     <script>
         <?php
             require __DIR__ .  '/vendor/autoload.php';
-            $domain = $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
+            $domain = 'https://' . $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
             $external_reference = "tomas@mountainlab.com.ar";
-            // $notification_url = $domain . 'notificaciones_mercadopago.php';
-            $notification_url = '/notificaciones_mercadopago.php';
+            $notification_url = $domain . 'notificaciones_mercadopago.php';
+            // $notification_url = '/notificaciones_mercadopago.php';
 
             // load .env variables
             if (file_exists(__DIR__ . '/.env')) {

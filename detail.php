@@ -51,8 +51,10 @@
             $notification_url = '/notificaciones_mercadopago.php';
 
             // load .env variables
-            $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
-            $dotenv->load();
+            if (file_exists(__DIR__ . '/.env')) {
+                $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
+                $dotenv->load();
+            }
 
             // Init Mercado Pago SDK
             \MercadoPago\SDK::setAccessToken($_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV']);

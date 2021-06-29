@@ -132,6 +132,11 @@
                                     <h1 class="pd-billboard-header pd-util-compact-small-18">
                                         Tienda e-commerce
                                     </h1>
+                                    <h4>
+                                        <?php echo $_ENV['MERCADOPAGO_INTEGRATOR_ID'] ?>
+                                        <br>
+                                        asdasd
+                                    </h4>
                                 </div>
                             </div>
                         </div>

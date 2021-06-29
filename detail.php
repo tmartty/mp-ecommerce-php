@@ -51,16 +51,16 @@
             $notification_url = '/notificaciones_mercadopago.php';
 
             // load .env variables
-            if (file_exists(__DIR__ . '/.env')) {
-                $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
-                $dotenv->load();
+            // if (file_exists(__DIR__ . '/.env')) {
+            //     $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
+            //     $dotenv->load();
                 
-                $mercadopago_access_token = $_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV'];
-                $mercadopago_integrator_id = $_ENV['MERCADOPAGO_INTEGRATOR_ID'];
-            } else {
+            //     $mercadopago_access_token = $_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV'];
+            //     $mercadopago_integrator_id = $_ENV['MERCADOPAGO_INTEGRATOR_ID'];
+            // } else {
                 $mercadopago_access_token = getenv('MERCADOPAGO_ACCESS_TOKEN_DEV');
                 $mercadopago_integrator_id = getenv('MERCADOPAGO_INTEGRATOR_ID');
-            }
+            // }
 
             // Init Mercado Pago SDK
             \MercadoPago\SDK::setAccessToken($mercadopago_access_token);

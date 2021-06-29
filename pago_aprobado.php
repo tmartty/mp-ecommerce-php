@@ -62,8 +62,41 @@
                     </div>
                 </div>
             </div>
-            <div style="display: flex; justify-content: center; align-items: center; padding: 10%; background: green; color: white;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10%; background: green; color: white;">
                 <h1>Pago aprobado</h1>
+                <div>
+                    collection_id: <?php echo htmlspecialchars($_GET['collection_id']) ?>
+                </div>
+                <div>
+                    collection_status: <?php echo htmlspecialchars($_GET['collection_status']) ?>
+                </div>
+                <div>
+                    payment_id: <?php echo htmlspecialchars($_GET['payment_id']) ?>
+                </div>
+                <div>
+                    status: <?php echo htmlspecialchars($_GET['status']) ?>
+                </div>
+                <div>
+                    external_reference: <?php echo htmlspecialchars($_GET['external_reference']) ?>
+                </div>
+                <div>
+                    payment_type: <?php echo htmlspecialchars($_GET['payment_type']) ?>
+                </div>
+                <div>
+                    merchant_order_id: <?php echo htmlspecialchars($_GET['merchant_order_id']) ?>
+                </div>
+                <div>
+                    preference_id: <?php echo htmlspecialchars($_GET['preference_id']) ?>
+                </div>
+                <div>
+                    site_id: <?php echo htmlspecialchars($_GET['site_id']) ?>
+                </div>
+                <div>
+                    processing_mode: <?php echo htmlspecialchars($_GET['processing_mode']) ?>
+                </div>
+                <div>
+                    merchant_account_id: <?php echo htmlspecialchars($_GET['merchant_account_id']) ?>
+                </div>
             </div>
         </div>
         <div role="alert" class="as-loader-text ally" aria-live="assertive"></div>

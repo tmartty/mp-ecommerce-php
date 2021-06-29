@@ -45,11 +45,7 @@
     <script>
         <?php
             require __DIR__ .  '/vendor/autoload.php';
-            $domain = 'https://' . $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
-            $external_reference = "tomas@mountainlab.com.ar";
-            $notification_url = $domain . 'notificaciones_mercadopago.php';
-            // $notification_url = '/notificaciones_mercadopago.php';
-
+            
             // load .env variables
             if (file_exists(__DIR__ . '/.env')) {
                 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
@@ -57,10 +53,15 @@
 
                 $mercadopago_access_token = $_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV'];
                 $mercadopago_integrator_id = $_ENV['MERCADOPAGO_INTEGRATOR_ID'];
+                $domain = 'http://' . $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
             } else {
                 $mercadopago_access_token = getenv('MERCADOPAGO_ACCESS_TOKEN_DEV');
                 $mercadopago_integrator_id = getenv('MERCADOPAGO_INTEGRATOR_ID');
+                $domain = 'https://' . $_SERVER['SERVER_NAME'] . '/';
             }
+
+            $notification_url = $domain . 'notificaciones_mercadopago.php';
+            $external_reference = "tomas@mountainlab.com.ar";
 
             // Init Mercado Pago SDK
             \MercadoPago\SDK::setAccessToken($mercadopago_access_token);
@@ -110,7 +111,7 @@
 
             $preference->external_reference = $external_reference;
 
-            // $preference->notification_url = $notification_url;
+            $preference->notification_url = $notification_url;
 
             $preference->auto_return = 'approved';
 

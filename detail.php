@@ -45,15 +45,20 @@
     <script>
         <?php
             require __DIR__ .  '/vendor/autoload.php';
+            $domain = $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
+            $external_reference = "tomas@mountainlab.com.ar";
+            // $notification_url = $domain . 'notificaciones_mercadopago.php';
+            $notification_url = '/notificaciones_mercadopago.php';
 
             // load .env variables
             $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
             $dotenv->load();
 
             // Init Mercado Pago SDK
-            $mercadopago = \MercadoPago\SDK::setAccessToken($_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV']);
+            \MercadoPago\SDK::setAccessToken($_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV']);
 
-            $external_reference="tomas@mountainlab.com.ar";
+            // Set integrator id
+            \MercadoPago\SDK::setIntegratorId($_ENV['MERCADOPAGO_INTEGRATOR_ID']);
 
             // Crea un objeto de preferencia
             $preference = new MercadoPago\Preference();
@@ -64,7 +69,7 @@
             $item->id = "1234";
             $item->title = $_POST['title'];
             $item->description = "Dispositivo móvil de Tienda e-commerce";
-            $item->picture_url = $_POST['img'];
+            $item->picture_url = $domain . $_POST['img'];
             $item->quantity = $_POST['unit'];
             $item->unit_price = $_POST['price'];
             $item->external_reference = $external_reference;
@@ -93,6 +98,18 @@
                 excluded_payment_types => [
                     ['id' => 'atm']
                 ]
+            ];
+
+            $preference->external_reference = $external_reference;
+
+            $preference->notification_url = $notification_url;
+
+            $preference->auto_return = 'approved';
+
+            $preference->back_urls = [
+                'success' => $domain . 'pago_aprobado.php',
+                'failure' => $domain . 'pago_rechazado.php',
+                'pending' => $domain . 'pago_pendiente.php'
             ];
 
             $preference->save();
@@ -159,7 +176,7 @@
                                             <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink" data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
                                                 <div class="as-tilegallery-element as-image-selected">
                                                     <div class=""></div>
-                                                    <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url(<?php echo $_POST['img'] ?>) 2x);">
+                                                    <img src="<?php echo $_POST['img'] ?>" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url(<?php echo $_POST['img'] ?>) 2x);">
                                                 </div>
                                                 
                                             </div>
@@ -193,10 +210,10 @@
                                         </h3>
                                         <input id="mercadopago-preference-id" type="hidden" value="<?php echo $preference->id; ?>">
                                     </div>
-                                    <div style="margin-top: 20px;" class="mercadopago-button"></div>
-<!--                                     <button style="margin-top: 20px;" type="submit" class="mercadopago-button" formmethod="post">
+                                    <a class="mercadopago-button" style="padding: 10px; text-decoration: none;" href="<?php echo $preference->init_point; ?>">
                                         Pagar la compra
-                                    </button> -->
+                                    </a>
+                                    <!-- <div style="margin-top: 20px;" class="mercadopago-button"></div> -->
                                 </div>
                             </div>
                         </div>
@@ -228,10 +245,10 @@
             preference: {
                 id: preferenceId
             },
-            render: {
-                container: '.mercadopago-button', // Indica dónde se mostrará el botón de pago
-                label: 'Pagar la compra', // Cambia el texto del botón de pago (opcional)
-            }
+            // render: {
+            //     container: '.mercadopago-button', // Indica dónde se mostrará el botón de pago
+            //     label: 'Pagar la compra', // Cambia el texto del botón de pago (opcional)
+            // }
         });
     </script>
 

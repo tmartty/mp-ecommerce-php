@@ -69,6 +69,21 @@
             $item->unit_price = $_POST['price'];
             $item->external_reference = $external_reference;
 
+            $payer = new MercadoPago\Payer();
+            $payer->name = 'Lalo';
+            $payer->surname = 'Landa';
+            $payer->email = 'test_user_63274575@testuser.com';
+            $payer->phone = [
+                'area_code' => '11',
+                'number' => '22223333'
+            ];
+            $payer->address = [
+                'street_name' => 'Falsa',
+                'street_number' => 123,
+                'zip_code' => '1111'
+            ];
+            $preference->payer = $payer;
+
             $preference->items = array($item);
             $preference->payment_methods = [
                 installments => 6,

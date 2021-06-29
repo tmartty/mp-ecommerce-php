@@ -59,8 +59,6 @@
                                 <div class="pd-billboard-info">
                                     <h1 class="pd-billboard-header pd-util-compact-small-18">
                                         Tienda e-commerce
-                                        <br>
-                                        getenv: <?php echo getenv('FOO', false)?>
                                     </h1>
                                 </div>
                             </div>

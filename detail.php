@@ -45,8 +45,7 @@
     <script>
         <?php
             require __DIR__ .  '/vendor/autoload.php';
-            // $domain = $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
-            $domain = 'https://tmartty-mp-commerce-php.herokuapp.com/';
+            $domain = $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
             $external_reference = "tomas@mountainlab.com.ar";
             // $notification_url = $domain . 'notificaciones_mercadopago.php';
             $notification_url = '/notificaciones_mercadopago.php';
@@ -111,7 +110,7 @@
 
             $preference->external_reference = $external_reference;
 
-            $preference->notification_url = $notification_url;
+            // $preference->notification_url = $notification_url;
 
             $preference->auto_return = 'approved';
 
@@ -141,11 +140,6 @@
                                     <h1 class="pd-billboard-header pd-util-compact-small-18">
                                         Tienda e-commerce
                                     </h1>
-                                    <h4>
-                                        <?php echo $mercadopago_integrator_id?>
-                                        <br>
-                                        asdasd
-                                    </h4>
                                 </div>
                             </div>
                         </div>

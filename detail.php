@@ -52,16 +52,16 @@
             $notification_url = '/notificaciones_mercadopago.php';
 
             // load .env variables
-            if (file_exists(__DIR__ . '/.env')) {
-                $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
-                $dotenv->load();
+            // if (file_exists(__DIR__ . '/.env')) {
+            //     $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
+            //     $dotenv->load();
 
-                $mercadopago_access_token = $_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV'];
-                $mercadopago_integrator_id = $_ENV['MERCADOPAGO_INTEGRATOR_ID'];
-            } else {
+            //     $mercadopago_access_token = $_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV'];
+            //     $mercadopago_integrator_id = $_ENV['MERCADOPAGO_INTEGRATOR_ID'];
+            // } else {
                 $mercadopago_access_token = getenv('MERCADOPAGO_ACCESS_TOKEN_DEV');
                 $mercadopago_integrator_id = getenv('MERCADOPAGO_INTEGRATOR_ID');
-            }
+            // }
 
             // Init Mercado Pago SDK
             \MercadoPago\SDK::setAccessToken($mercadopago_access_token);
@@ -76,11 +76,14 @@
             $item = new MercadoPago\Item();
 
             $item->id = "1234";
-            $item->title = $_POST['title'];
+            // $item->title = $_POST['title'];
+            $item->title = 'test';
             $item->description = "Dispositivo móvil de Tienda e-commerce";
-            $item->picture_url = $domain . $_POST['img'];
-            $item->quantity = $_POST['unit'];
-            $item->unit_price = $_POST['price'];
+            // $item->picture_url = $domain . $_POST['img'];
+            // $item->quantity = $_POST['unit'];
+            $item->quantity = '1';
+            // $item->unit_price = $_POST['price'];
+            $item->unit_price = 100;
             $item->external_reference = $external_reference;
 
             $payer = new MercadoPago\Payer();
@@ -208,19 +211,19 @@
                                         <div class="as-producttile-title">
                                             <h3 class="as-producttile-name">
                                                 <p class="as-producttile-tilelink">
-                                                    <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span>
+                                                    <!-- <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span> -->
                                                 </p>
 
                                             </h3>
                                         </div>
                                         <h3 >
-                                            Precio: <?php echo "$" . $_POST['price'] ?>
+                                            <!-- Precio: <?php echo "$" . $_POST['price'] ?> -->
                                         </h3>
                                         <h3 >
-                                            Unidades: <?php echo $_POST['unit'] ?>
+                                            <!-- Unidades: <?php echo $_POST['unit'] ?> -->
                                         </h3>
                                         <h3 >
-                                            Total: <?php echo "$" . ($_POST['price'] * $_POST['unit']) ?>
+                                            <!-- Total: <?php echo "$" . ($_POST['price'] * $_POST['unit']) ?> -->
                                         </h3>
                                         <input id="mercadopago-preference-id" type="hidden" value="<?php echo $preference->id; ?>">
                                     </div>

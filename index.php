@@ -60,7 +60,7 @@
                                     <h1 class="pd-billboard-header pd-util-compact-small-18">
                                         Tienda e-commerce
                                         <br>
-                                        <?php echo getenv('foo')?>
+                                        getenv: <?php echo getenv('FOO', false)?>
                                     </h1>
                                 </div>
                             </div>

@@ -54,7 +54,7 @@
             if (file_exists(__DIR__ . '/.env')) {
                 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
                 $dotenv->load();
-                
+
                 $mercadopago_access_token = $_ENV['MERCADOPAGO_ACCESS_TOKEN_DEV'];
                 $mercadopago_integrator_id = $_ENV['MERCADOPAGO_INTEGRATOR_ID'];
             } else {

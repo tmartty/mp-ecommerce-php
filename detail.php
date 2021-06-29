@@ -51,10 +51,10 @@
             $notification_url = '/notificaciones_mercadopago.php';
 
             // load .env variables
-            if (file_exists(__DIR__ . '/.env')) {
-                $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
-                $dotenv->load();
-            }
+            // if (file_exists(__DIR__ . '/.env')) {
+            //     $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__, '.env');
+            //     $dotenv->load();
+            // }
 
             // Init Mercado Pago SDK
             \MercadoPago\SDK::setAccessToken(getenv('MERCADOPAGO_ACCESS_TOKEN_DEV'));
@@ -135,7 +135,7 @@
                                         Tienda e-commerce
                                     </h1>
                                     <h4>
-                                        <?php echo getenv('MERCADOPAGO_INTEGRATOR_ID') ?>
+                                        <?php echo getenv('MERCADOPAGO_INTEGRATOR_ID'])?>
                                         <br>
                                         asdasd
                                     </h4>

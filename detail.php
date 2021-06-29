@@ -45,7 +45,8 @@
     <script>
         <?php
             require __DIR__ .  '/vendor/autoload.php';
-            $domain = $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
+            // $domain = $_SERVER['SERVER_NAME'] . ($_SERVER['SERVER_PORT'] ? ':' . $_SERVER['SERVER_PORT'] : '') . '/';
+            $domain = 'https://tmartty-mp-commerce-php.herokuapp.com/';
             $external_reference = "tomas@mountainlab.com.ar";
             // $notification_url = $domain . 'notificaciones_mercadopago.php';
             $notification_url = '/notificaciones_mercadopago.php';

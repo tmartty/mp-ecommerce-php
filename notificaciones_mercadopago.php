@@ -11,7 +11,7 @@
             "-------------------------" . PHP_EOL;
 
     //Save string to log, use FILE_APPEND to append.
-    file_put_contents('./logs/log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+    file_put_contents('./logs/mercadopago.log', $log, FILE_APPEND);
 
     return;
 ?>
